@@ -13,8 +13,10 @@ public class RoomChanger : MonoBehaviour
 	[SerializeField] private GameObject GLivingRoom;
 	[SerializeField] private GameObject Bedroom;
 	[SerializeField] private GameObject GBedroom;
+	[SerializeField] private GameObject Introduction;
+	[SerializeField] private GameObject End;
 
-	private List<GameObject> switchGO = new List<GameObject>();
+	private Dictionary<Room, GameObject> switchGO = new Dictionary<Room, GameObject>();
 
 	private static RoomChanger instance;
 
@@ -29,53 +31,34 @@ public class RoomChanger : MonoBehaviour
 
 	private void Start()
 	{
-		switchGO.Add(Bathroom);
-		switchGO.Add(GBathroom);
-		switchGO.Add(Kitchen);
-		switchGO.Add(GKitchen);
-		switchGO.Add(LivingRoom);
-		switchGO.Add(GLivingRoom);
-		switchGO.Add(Bedroom);
-		switchGO.Add(GBedroom);
+		switchGO.Add(Room.BathroomPhysical,Bathroom);
+		switchGO.Add(Room.BathroomSpirit, GBathroom);
+		switchGO.Add(Room.KitchenPhysical, Kitchen);
+		switchGO.Add(Room.KitchenSpirit, GKitchen);
+		switchGO.Add(Room.LivingRoomPhysical, LivingRoom);
+		switchGO.Add(Room.LivingRoomSpirit, GLivingRoom);
+		switchGO.Add(Room.BedroomPhysical, Bedroom);
+		switchGO.Add(Room.BedroomSpirit, GBedroom);
+		switchGO.Add(Room.BlackscreenIntroduction, Introduction);
+		switchGO.Add(Room.BlackscreenEnding, End);
 	}
 
-	private void SwitchToRoom(Room room)
+	public void SwitchToRoom(Room room)
 	{
-		switch ((int)room)
-		{
-			case 0:
-				break;
-			case 1:
-				break;
-			case 2:
-				break;
-			case 3:
-				break;
-			case 4:
-				break;
-			case 5:
-				break;
-			case 6:
-				break;
-			case 7:
-				break;
-			case 8:
-				break;
-			case 9:
-				break;
-		}
+		Activate(room);
 	}
 
-	private void Activate(GameObject go)
+	private void Activate(Room room)
 	{
-		switchGO.Remove(go);
+		GameObject go = switchGO[room];
+		switchGO.Remove(room);
 
-		foreach (GameObject g in switchGO)
+		foreach (var item in switchGO)
 		{
-			g.SetActive(false);
+			item.Value.SetActive(false);
 		}
 
-		switchGO.Add(go);
+		switchGO.Add(room, go);
 
 		go.SetActive(true);
 	}

@@ -7,7 +7,7 @@ using TMPro;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine.UI;
 
-public enum CurrentRoom
+public enum Room
 {
 	BlackscreenIntroduction = 0,
 	LivingRoomPhysical = 1,
@@ -109,9 +109,9 @@ public class InkScript : MonoBehaviour
 
     private void CheckForRoomChange()
     {
-	    CurrentRoom room = (CurrentRoom)inkStory.variablesState[""];
+	    Room room = (Room)inkStory.variablesState["currentRoom"];
 
-	    
+		RoomChanger.Instance.SwitchToRoom(room);
     }
 
     private void DisplayStoryText(string t)
