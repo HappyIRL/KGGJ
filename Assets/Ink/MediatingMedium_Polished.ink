@@ -24,10 +24,12 @@ VAR playerKnowsBook = 0
 
 -> Introduction
 === Introduction ===
+// The player sees a black screeen with the following on screen text
 "I am what the people call a medium. I can communicate with the ghosts of the spirit realm. I earn money by settling conflicts between the ghosts and living. My latest job lead me to the flat of an old geezer, who claimed to be haunted by his late wife. I thought this would be easily earned money."
 
--> PhysicalWorld_LivingRoom_1
-
+-> END
+// The 1st scene is loaded and the player sees the grandpa and the player character in the living room in the physical world
+// The 1st dialogue starts -> see === PhysicalWorld_LivingRoom_1 ===
 
 
 === PhysicalWorld_LivingRoom_1 ===
@@ -79,11 +81,12 @@ Grandpa: "Anyways. Can you help me find some sleep again?"
 Player: "I'll do my best."
 Grandpa: "Thank you youngblood."
 
-*Go to bathroom
-    -> Note
-
-*Go to spirit realm
-    -> SpiritRealm_Kitchen_1_1 
+-> END
+// the dialogue with the grandpa ends
+// the player can now navigate the flat in the physical world
+// the player can find the note in the bathroom -> see === Note ===
+// the player can change to the spirit realm 
+// the player can go to the kitchen in the spirit realm and start talking to the grandma -> see === SpiritRealm_Kitchen_1_1 ===
 
 
 
@@ -94,7 +97,12 @@ A crumpled old post-it note:
 Tuesday: Grocery shopping.
 Saturday: Washing day. DON'T mix colored clothes with white ones.
 DON'T forget to wash the dishes daily!!!"
--> SpiritRealm_Kitchen_1_1
+
+-> END
+// the dialogue about the note ends and the note is gone
+// the player can now navigate flat in the physical world
+// the player can change to the spirit realm 
+// the player can go to the kitchen in the spirit realm and start talking to the grandma -> see === SpiritRealm_Kitchen_1_1 ===
 
 
 
@@ -152,11 +160,12 @@ Player: "Okay, so how may I convince you to leave him alone?"
 Grandma: "I see no way, you are getting me out of here. But maybe you want to ask him what he has to offer. Until then, please don't waste my time."
 Player: "..."
 
-* Go to bedroom
--> Picture
-
-*Go to physical world
--> PhysicalWorld_LivingRoom_2_1
+-> END
+// the dialogue with the grandma ends
+// the player can now navigate flat in the spirit realm
+// the player can find the picture in the bedroom -> see === Picture ===
+// the player can change to the physical world
+// the player can go to the living room in the physical world and start talking to the grandpa -> see === PhysicalWorld_LivingRoom_2_1 ===
 
 
 
@@ -164,7 +173,12 @@ Player: "..."
 ~ playerKnowsPicture = 1
 An old yellowed image taken on a family vacation:
 "Thank you, my love, for financing the trip for me and the girls. We have a wonderful time, the only thing missing is you. Hopefully you can join us next time."
--> PhysicalWorld_LivingRoom_2_1
+
+-> END
+// the dialogue about the picture ends and the picture is gone
+// the player can now navigate the flat in the spirit world
+// the player can change to the physical world
+// the player can go to the living room in the physical world and start talking to the grandpa -> see === PhysicalWorld_LivingRoom_2_1 ===
 
 
 
@@ -224,11 +238,12 @@ Grandpa: "So, was there anything she wanted in return for her to leave?"
 Player: "Nope. She was asking what you are offering."
 Grandpa: "Offering? I don't have anything to offer. Go back and ask her. She must want something."
 
-*Inspect Living Room
--> Book
-
-*Go to spirit realm
--> SpiritRealm_Kitchen_2_1
+-> END
+// the dialogue with the grandpa ends
+// the player can now navigate the flat in the physical world
+// the player can find the book in the living room -> see === Book ===
+// the player can change to the spirit realm 
+// the player can go to the kitchen in the spirit realm and start talking to the grandma -> see === SpiritRealm_Kitchen_2_1 ===
 
 
 
@@ -237,7 +252,12 @@ Grandpa: "Offering? I don't have anything to offer. Go back and ask her. She mus
 A book about ornithology in a box labeled "Sell":
 "In 2015 the robin was voted Britain's national bird. 
 In handwriting somebody has added: ... but it always was the favorite bird of my beloved wife <3."
--> SpiritRealm_Kitchen_2_1
+
+-> END
+// the dialogue about the book ends and the book is gone
+// the player can now navigate flat in the physical world
+// the player can change to the spirit realm 
+// the player can go to the kitchen in the spirit realm and start talking to the grandma -> see === SpiritRealm_Kitchen_2_1 ===
 
 
 
@@ -300,7 +320,12 @@ Grandma: "God! Why does he always need to be so indecisive?"
 Grandma: "Well ... Thank you for taking the effort and opening my eyes, Medium."
 Player: "Good to hear that. What will you do now?"
 Grandma: "You'll see. But for now I have to leave. Farewell."
-->GrandpaDecision
+
+-> END
+// the dialogue with the grandma ends
+// the player can now navigate flat in the spirit realm
+// the player can change to the physical world
+// the player can go to the living room in the physical world and start talking to the grandpa -> see === GrandpaDecision ===
 
 
 
@@ -328,7 +353,10 @@ Grandpa: "Stubborn as always."
 Grandpa: "Thank you for you services. You should receive your payment in the next few days."
 Player: "Good day to you, Sir."
 Grandpa: "Good day."
--> Ending
+
+-> END
+// fade to black
+// ending is shown as onscreen text depending on the player's decisions -> see === Ending ===
 
 
 

@@ -4,7 +4,22 @@ using Ink;
 using UnityEngine;
 using Ink.Runtime;
 using TMPro;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine.UI;
+
+public enum CurrentRoom
+{
+	BlackscreenIntroduction = 0,
+	LivingRoomPhysical = 1,
+	KitchenPhysical = 2,
+	BedroomPhysical = 3,
+	BathroomPhysical = 4,
+	LivingRoomSpirit = 5,
+	KitchenSpirit = 6,
+	BedroomSpirit = 7,
+	BathroomSpirit = 8,
+	BlackscreenEnding = 9
+}
 
 public class InkScript : MonoBehaviour
 {
@@ -24,11 +39,6 @@ public class InkScript : MonoBehaviour
 	    ContinueStory();
     }
 
-    private void Start()
-    {
-
-    }
-
     private void OnEnable()
     {
 	    button.onClick.AddListener(ContinueStory);
@@ -45,17 +55,17 @@ public class InkScript : MonoBehaviour
     }
 
 	private void ContinueStory()
-    {
-	    if (inkStory.canContinue)
-	    {
-		    inkStory.Continue();
-		    DisplayStoryText(inkStory.currentText);
-	    }
-	    else
-	    {
-		    CheckForChoices();
-	    }
-    }
+	{
+		if (inkStory.canContinue)
+		{
+			inkStory.Continue();
+			DisplayStoryText(inkStory.currentText);
+		}
+		else
+		{
+			CheckForChoices();
+		}
+	}
 
     private void CheckForChoices()
     {
@@ -85,15 +95,23 @@ public class InkScript : MonoBehaviour
     {
 	    inkStory.ChooseChoiceIndex(choice.index);
 
+	    CheckForRoomChange();
 
-        ContinueStory();
+	    ContinueStory();
+
         button.gameObject.SetActive(true);
-
 
         foreach (Transform children in choiceContentObject)
         {
 	        Destroy(children.gameObject);
         }
+    }
+
+    private void CheckForRoomChange()
+    {
+	    CurrentRoom room = (CurrentRoom)inkStory.variablesState[""];
+
+	    
     }
 
     private void DisplayStoryText(string t)
